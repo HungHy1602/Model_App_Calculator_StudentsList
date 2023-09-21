@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             lbResult = new Label();
             lbId = new Label();
             lbName = new Label();
@@ -38,13 +39,16 @@
             btCreate = new Button();
             dgvListStudent = new DataGridView();
             btUpdate = new Button();
+            btDelete = new Button();
+            btCancel = new Button();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvListStudent).BeginInit();
             SuspendLayout();
             // 
             // lbResult
             // 
             lbResult.AutoSize = true;
-            lbResult.Location = new Point(28, 426);
+            lbResult.Location = new Point(12, 551);
             lbResult.Name = "lbResult";
             lbResult.Size = new Size(96, 15);
             lbResult.TabIndex = 0;
@@ -53,7 +57,7 @@
             // lbId
             // 
             lbId.AutoSize = true;
-            lbId.Location = new Point(48, 41);
+            lbId.Location = new Point(121, 215);
             lbId.Name = "lbId";
             lbId.Size = new Size(18, 15);
             lbId.TabIndex = 1;
@@ -62,7 +66,7 @@
             // lbName
             // 
             lbName.AutoSize = true;
-            lbName.Location = new Point(48, 118);
+            lbName.Location = new Point(121, 292);
             lbName.Name = "lbName";
             lbName.Size = new Size(39, 15);
             lbName.TabIndex = 2;
@@ -71,7 +75,7 @@
             // lbAge
             // 
             lbAge.AutoSize = true;
-            lbAge.Location = new Point(48, 218);
+            lbAge.Location = new Point(121, 392);
             lbAge.Name = "lbAge";
             lbAge.Size = new Size(28, 15);
             lbAge.TabIndex = 3;
@@ -79,28 +83,28 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(112, 41);
+            txtId.Location = new Point(185, 215);
             txtId.Name = "txtId";
             txtId.Size = new Size(221, 23);
             txtId.TabIndex = 4;
             // 
             // txtName
             // 
-            txtName.Location = new Point(112, 118);
+            txtName.Location = new Point(185, 292);
             txtName.Name = "txtName";
             txtName.Size = new Size(221, 23);
             txtName.TabIndex = 5;
             // 
             // txtAge
             // 
-            txtAge.Location = new Point(112, 215);
+            txtAge.Location = new Point(185, 389);
             txtAge.Name = "txtAge";
             txtAge.Size = new Size(221, 23);
             txtAge.TabIndex = 6;
             // 
             // btCreate
             // 
-            btCreate.Location = new Point(258, 284);
+            btCreate.Location = new Point(185, 458);
             btCreate.Name = "btCreate";
             btCreate.Size = new Size(75, 23);
             btCreate.TabIndex = 7;
@@ -111,15 +115,15 @@
             // dgvListStudent
             // 
             dgvListStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvListStudent.Location = new Point(377, 17);
+            dgvListStudent.Location = new Point(450, 191);
             dgvListStudent.Name = "dgvListStudent";
             dgvListStudent.RowTemplate.Height = 25;
-            dgvListStudent.Size = new Size(396, 290);
+            dgvListStudent.Size = new Size(339, 349);
             dgvListStudent.TabIndex = 8;
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(161, 284);
+            btUpdate.Location = new Point(331, 458);
             btUpdate.Name = "btUpdate";
             btUpdate.Size = new Size(75, 23);
             btUpdate.TabIndex = 9;
@@ -127,11 +131,45 @@
             btUpdate.UseVisualStyleBackColor = true;
             btUpdate.Click += btUpdate_Click;
             // 
+            // btDelete
+            // 
+            btDelete.Location = new Point(185, 517);
+            btDelete.Name = "btDelete";
+            btDelete.Size = new Size(75, 23);
+            btDelete.TabIndex = 10;
+            btDelete.Text = "Delete";
+            btDelete.UseVisualStyleBackColor = true;
+            btDelete.Click += btDelete_Click;
+            // 
+            // btCancel
+            // 
+            btCancel.Location = new Point(331, 517);
+            btCancel.Name = "btCancel";
+            btCancel.Size = new Size(75, 23);
+            btCancel.TabIndex = 11;
+            btCancel.Text = "Cancel";
+            btCancel.UseVisualStyleBackColor = true;
+            btCancel.Click += btCancel_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Moccasin;
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Location = new Point(226, 23);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(524, 144);
+            panel1.TabIndex = 12;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(932, 575);
+            Controls.Add(panel1);
+            Controls.Add(btCancel);
+            Controls.Add(btDelete);
             Controls.Add(btUpdate);
             Controls.Add(dgvListStudent);
             Controls.Add(btCreate);
@@ -143,7 +181,9 @@
             Controls.Add(lbId);
             Controls.Add(lbResult);
             Name = "Form1";
-            Text = "Form1";
+            Text = "List Student";
+            FormClosed += Form1_FormClosed;
+            Click += btCancel_Click;
             ((System.ComponentModel.ISupportInitialize)dgvListStudent).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -161,5 +201,8 @@
         private Button btCreate;
         private DataGridView dgvListStudent;
         private Button btUpdate;
+        private Button btDelete;
+        private Button btCancel;
+        private Panel panel1;
     }
 }

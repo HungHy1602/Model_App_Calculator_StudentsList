@@ -63,34 +63,34 @@ namespace Model_App
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-                int idToUpdate;
-                if (!int.TryParse(txtId.Text.Trim(), out idToUpdate))
-                {
-                    MessageBox.Show("Id must be a valid number.");
-                    return;
-                }
+            int idToUpdate;
+            if (!int.TryParse(txtId.Text.Trim(), out idToUpdate))
+            {
+                MessageBox.Show("Id must be a valid number.");
+                return;
+            }
 
-                string newName = txtName.Text.Trim();
+            string newName = txtName.Text.Trim();
 
-                int newAge;
-                if (!int.TryParse(txtAge.Text.Trim(), out newAge) || newAge <= 0)
-                {
-                    MessageBox.Show("Age must be a positive integer.");
-                    return;
-                }
+            int newAge;
+            if (!int.TryParse(txtAge.Text.Trim(), out newAge) || newAge <= 0)
+            {
+                MessageBox.Show("Age must be a positive integer.");
+                return;
+            }
 
-                // Find the student to update by their ID
-                var studentToUpdate = students.FirstOrDefault(s => s.Id == idToUpdate);
+            // Find the student to update by their ID
+            var studentToUpdate = students.FirstOrDefault(s => s.Id == idToUpdate);
 
-                if (studentToUpdate == null)
-                {
-                    MessageBox.Show("Student with the provided ID does not exist.");
-                    return;
-                }
+            if (studentToUpdate == null)
+            {
+                MessageBox.Show("Student with the provided ID does not exist.");
+                return;
+            }
 
-                // Update the student's properties
-                studentToUpdate.Name = newName;
-                studentToUpdate.Age = newAge;
+            // Update the student's properties
+            studentToUpdate.Name = newName;
+            studentToUpdate.Age = newAge;
 
             BindingSource source = new BindingSource();
             source.DataSource = students;
@@ -99,5 +99,35 @@ namespace Model_App
 
         }
 
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            int idToDelete;
+            {
+                if (!int.TryParse(txtId.Text.Trim(), out int Id))
+                    MessageBox.Show("Id Will Be Remove");
+                return;
+            }
+            BindingSource source = new BindingSource();
+            source.DataSource = students;
+
+            dgvListStudent.DataSource = source;
+
+        }
+
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DialogResult result;
+            result = MessageBox.Show("Do U Want Out", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                 // e.Cancel = true;
+            }
+
+        }
     }
 }
